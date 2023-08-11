@@ -1,9 +1,15 @@
 package com.boot.SpringDbProject.entity;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+
 import java.util.Date;
 
 public class Transactions {
+    @Id
+    private ObjectId _id;
     private String trans_date_trans_time;
+
     private double amt;
     private int trans_num;
     private long customer_id;
@@ -57,6 +63,14 @@ public class Transactions {
         this.gender = gender;
         this.job = job;
         this.dob = dob;
+    }
+
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     public String getTrans_date_trans_time() {

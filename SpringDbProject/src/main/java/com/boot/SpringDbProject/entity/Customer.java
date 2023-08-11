@@ -1,7 +1,9 @@
 package com.boot.SpringDbProject.entity;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 @Document
@@ -13,15 +15,26 @@ public class Customer {
     private String gender;
     private String job;
     private Date dob;
-//@Id
-    private long customer_id;
-    public Customer(String first, String last, String gender, String job, Date dob, int customer_id) {
+   @Field("customer_id")
+    private int customerid;
+    @Id
+    private ObjectId _id;
+
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
+    }
+
+    public Customer(String first, String last, String gender, String job, Date dob, int customerid) {
         this.first = first;
         this.last = last;
         this.gender = gender;
         this.job = job;
         this.dob = dob;
-        this.customer_id = customer_id;
+        this.customerid = customerid;
     }
 
     public String getFirst() {
@@ -64,11 +77,11 @@ public class Customer {
         this.dob = dob;
     }
 
-    public long getCustomer_id() {
-        return customer_id;
+    public int getCustomerid() {
+        return customerid;
     }
 
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerid(int customerid) {
+        this.customerid = customerid;
     }
 }
